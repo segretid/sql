@@ -209,5 +209,5 @@ Consider, for example, concepts of fariness, inequality, social structures, marg
 
 
 ```
-Your thoughts...
+I think point card systems at stores are an example of databases and data systems that I frequently encounter when shopping at the store. This is usually based on having a phone number they can attach to your points card number in their database. Alternatively, sometimes they can search up your name. In many cases, the spelling of your name is really contingent on how the store employee inputted your information in the system when you first signed up. Usually, a phone number is needed first to make an account, which could be a source of inequality because it makes the assumption that everyone has a phone number.
 ```
