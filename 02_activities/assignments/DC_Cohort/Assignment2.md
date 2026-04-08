@@ -190,6 +190,5 @@ Read: Boykis, V. (2019, October 16). _Neural nets are just people all the way do
 Consider, for example, concepts of labour, bias, LLM proliferation, moderating content, intersection of technology and society, ect. 
 
 
-```
-Your thoughts...
+I think the most prominent ethical issue raised in this story is the role of humans in being the 'motor' for all things technological. While there is the understanding that through engaging with machines were are not interactivng with humans, ther opposite is true in a detached way. There are some processes that AI can produce, but not without human input. This also highlights the importance of fiar human-machine collaboration. 
 ```

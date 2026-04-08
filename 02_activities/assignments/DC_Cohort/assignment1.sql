@@ -7,7 +7,7 @@
 /* 1. Write a query that returns everything in the customer table. */
 --QUERY 1
 
-
+SELECT * FROM customer;
 
 
 --END QUERY
@@ -17,7 +17,9 @@
 sorted by customer_last_name, then customer_first_ name. */
 --QUERY 2
 
-
+SELECT customer_last_name, customer_first_name
+	FROM customer
+	LIMIT 10;
 
 
 --END QUERY
@@ -28,7 +30,10 @@ sorted by customer_last_name, then customer_first_ name. */
 Limit to 25 rows of output. */
 --QUERY 3
 
-
+SELECT customer_purchases
+	FROM 
+	WHERE product_id = 4 OR 9
+	LIMIT 25 ;
 
 
 --END QUERY
@@ -43,7 +48,9 @@ Limit to 25 rows of output.
 */
 --QUERY 4
 
-
+SELECT * FROM customer_purchase
+	ADD price =quantity*cost_to_customer_per_qty
+	WHERE customer_ID BETWEEN 8 AND 10;
 
 
 --END QUERY
@@ -56,7 +63,13 @@ columns and add a column called prod_qty_type_condensed that displays the word �
 if the product_qty_type is “unit,” and otherwise displays the word “bulk.” */
 --QUERY 5
 
-
+SELECT product_id, product_name
+	FROM product
+	ADD prod_qty_type
+		WHEN product_qty_type = unit
+		THEN "unit"
+		ELSE "bulk"
+		END;
 
 
 --END QUERY
@@ -67,7 +80,17 @@ add a column to the previous query called pepper_flag that outputs a 1 if the pr
 contains the word “pepper” (regardless of capitalization), and otherwise outputs 0. */
 --QUERY 6
 
-
+SELECT product_id, product_name
+	FROM product
+	ADD prod_qty_type
+		WHEN product_qty_type = unit
+		THEN "unit"
+		ELSE "bulk"
+		ADD pepper_flag
+		WHEN pepper
+		THEN 1
+		ELSE 0 
+		END;
 
 
 --END QUERY
@@ -80,7 +103,12 @@ Limit to 24 rows of output. */
 --QUERY 7
 
 
-
+SELECT vendor_id
+	FROM vendor
+	INNER JOIN vendor_booth_assignments
+	ON vendor_id;
+	
+	
 
 --END QUERY
 
@@ -93,7 +121,9 @@ Limit to 24 rows of output. */
 at the farmer’s market by counting the vendor booth assignments per vendor_id. */
 --QUERY 8
 
-
+SELECT vendor_id
+COUNT(vendor_id)
+END;
 
 
 --END QUERY
@@ -106,7 +136,11 @@ of customers for them to give stickers to, sorted by last name, then first name.
 HINT: This query requires you to join two tables, use an aggregate function, and use the HAVING keyword. */
 --QUERY 9
 
-
+ SELECT customer
+ FROM customer_id
+ JOIN customer_purchases
+ COUNT(total_spend)
+HAVING <= 2000; 
 
 
 --END QUERY
@@ -125,8 +159,11 @@ VALUES(col1,col2,col3,col4,col5)
 */
 --QUERY 10
 
-
-
+SELECT vendor
+FROM vendor
+ADD temp.new_vendor 
+ADD " Thomass Superfood Store, a Fresh Focused store, owned by Thomas Rosenthal"
+END
 
 --END QUERY
 
@@ -139,7 +176,9 @@ and year are!
 Limit to 25 rows of output. */
 --QUERY 11
 
-
+SELECT customer_id, mm, yy
+FROM customer_purchases
+LIMIT 25
 
 
 --END QUERY
@@ -153,6 +192,11 @@ but remember, STRFTIME returns a STRING for your WHERE statement...
 AND be sure you remove the LIMIT from the previous query before aggregating!! */
 --QUERY 12
 
+SELECT customer_id, mm, yy
+FROM customer_purchases
+GROUP BY cost_to_customer_per_qty
+COUNT(quantity*cost_to_customer_per_qty)
+END
 
 
 
